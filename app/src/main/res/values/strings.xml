@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">allbasketsignup</string>
+    <string name="ImageDescription"> </string>
+
+    <string name="signup">회원 가입</string>
+    <string name="modify">정보 변경</string>
+    <string name="next">다음</string>
+    <string name="search">검색</string>
+    <string name="confirm">확인</string>
+
+
+    <string name="signup_title1">약관 동의</string>
+    <string name="membersignup_termstitle1">올바스켓 이용약관 동의&#160;&#160;(필수)</string>
+    <string name="membersignup_termstitle2">개인정보 수집 및 이용 동의&#160;&#160;(필수)</string>
+    <string name="membersignup_termstitle3">이벤트 및 행사 정보 SMS 수신 동의&#160;&#160;(선택)</string>
+
+    <string name="memberregister_title">회원 가입</string>
+    <string name="memberregister_name">이름</string>
+    <string name="memberregister_namehint">올바스켓 (필수)</string>
+    <string name="memberregister_sms">SMS 수신</string>
+    <string name="memberregister_cel">휴대폰 번호</string>
+    <string name="memberregister_celhint">010&#8211;0000&#8211;0000 (필수)</string>
+    <string name="memberregister_tel">전화 번호</string>
+    <string name="memberregister_telhint">031&#8211;0000&#8211;0000 (선택)</string>
+    <string name="memberregister_addr">주소</string>
+    <string name="memberregister_addrsearch">주소 검색</string>
+    <string name="memberregister_addrhint">경기 이천시 마장면 오천로 36&#8211;8 올바스켓 (필수)</string>
+    <string name="memberregister_email">이메일</string>
+    <string name="memberregister_emailhint">allbasket@email.com (선택)</string>
+    <string name="memberregister_male">남</string>
+    <string name="memberregister_female">여</string>
+    <string name="memberregister_welcome1">환영합니다</string>
+    <string name="memberregister_welcome2">님 회원가입이 완료되었습니다</string>
+    <string name="memberregister_welcome3">올바스켓 멤버십 혜택과 함께하세요</string>
+
+
+</resources>
