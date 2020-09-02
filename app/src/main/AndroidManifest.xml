@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.ikco10.allbasketsignup">
 
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-feature android:name="android.hardware.screen.portrait" />
 
     <application

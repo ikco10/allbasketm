@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -175,26 +176,21 @@ public class FragmentMemberSignup1 extends Fragment {
         termsTV1.setText(terms1);
         termsTV2.setText(terms2);
 
-        checkBox1.setOnClickListener(new OnSingleClickListener() {
-            @Override
-            public void onSingleClick(View v) {
-                if (checkBox1.isChecked() && checkBox2.isChecked()) {
-                    if (getParentFragment() != null) {
-                        ((DialogMemberSignup) getParentFragment()).mNext.setEnabled(true);
-                        ((DialogMemberSignup) getParentFragment()).mNext.setTextColor(getResources().getColor(R.color.colorPrimary));
-                    }
-                } else {
-                    if (getParentFragment() != null) {
-                        ((DialogMemberSignup) getParentFragment()).mNext.setEnabled(false);
-                        ((DialogMemberSignup) getParentFragment()).mNext.setTextColor(getResources().getColor(R.color.md_white_1000));
-                    }
+        checkBox1.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (checkBox1.isChecked() && checkBox2.isChecked()) {
+                if (getParentFragment() != null) {
+                    ((DialogMemberSignup) getParentFragment()).mNext.setEnabled(true);
+                    ((DialogMemberSignup) getParentFragment()).mNext.setTextColor(getResources().getColor(R.color.colorPrimary));
+                }
+            } else {
+                if (getParentFragment() != null) {
+                    ((DialogMemberSignup) getParentFragment()).mNext.setEnabled(false);
+                    ((DialogMemberSignup) getParentFragment()).mNext.setTextColor(getResources().getColor(R.color.md_white_1000));
                 }
             }
         });
 
-        checkBox2.setOnClickListener(new OnSingleClickListener() {
-            @Override
-            public void onSingleClick(View v) {
+        checkBox2.setOnCheckedChangeListener((buttonView, isChecked) -> {
                 if (checkBox1.isChecked() && checkBox2.isChecked()) {
                     if (getParentFragment() != null) {
                         ((DialogMemberSignup) getParentFragment()).mNext.setEnabled(true);
@@ -206,7 +202,6 @@ public class FragmentMemberSignup1 extends Fragment {
                         ((DialogMemberSignup) getParentFragment()).mNext.setTextColor(getResources().getColor(R.color.md_white_1000));
                     }
                 }
-            }
         });
 
         return view;

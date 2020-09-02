@@ -43,7 +43,7 @@ public class FragmentMemberSignup3 extends Fragment{
         mWebView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
         mWebView.addJavascriptInterface(new AndroidBridge(), "allbasket");
         mWebView.setWebViewClient(new WebViewClient());
-        mWebView.loadUrl("http://allbasket7755.iptime.org:5143/allbasket/address.jsp");
+        mWebView.loadUrl("http://59.12.186.68:55282/allbasket/addresstab.jsp");
 
         return view;
     }
@@ -56,7 +56,7 @@ public class FragmentMemberSignup3 extends Fragment{
         mWebView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
         mWebView.addJavascriptInterface(new AndroidBridge(), "allbasket");
         mWebView.setWebViewClient(new WebViewClient());
-        mWebView.loadUrl("http://allbasket7755.iptime.org:5143/allbasket/address.jsp");
+        mWebView.loadUrl("http://59.12.186.68:55282/allbasket/addresstab.jsp");
     }
 
     class AndroidBridge {

@@ -21,8 +21,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginEnd="24dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
             android:orientation="vertical">
 
             <LinearLayout
@@ -38,7 +38,7 @@
                     android:gravity="center_vertical"
                     android:text="@string/memberregister_name"
                     android:textColor="@color/md_grey_900"
-                    android:textSize="14sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <RadioGroup
@@ -55,15 +55,16 @@
                         android:layout_height="wrap_content"
                         android:checked="true"
                         android:text="@string/memberregister_male"
-                        android:textSize="14sp"
+                        android:textSize="20sp"
                         android:textStyle="bold" />
 
                     <RadioButton
                         android:id="@+id/female"
+                        android:layout_marginStart="20dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/memberregister_female"
-                        android:textSize="14sp"
+                        android:textSize="20sp"
                         android:textStyle="bold" />
 
                 </RadioGroup>
@@ -73,8 +74,9 @@
             <com.ikco10.allbasketsignup.Utils.ClearEditText
                 android:id="@+id/membersearch_name"
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginBottom="20dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="40dp"
                 android:ems="10"
                 android:hint="@string/memberregister_namehint"
                 android:importantForAutofill="no"
@@ -88,7 +90,7 @@
                 android:textColorHighlight="#2208A1E8"
                 android:textColorHint="@color/md_grey_500"
                 android:textCursorDrawable="@drawable/edittext_cursor"
-                android:textSize="15sp" />
+                android:textSize="22sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -99,11 +101,10 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
-                    android:layout_marginBottom="6dp"
                     android:layout_weight="1"
                     android:text="@string/memberregister_cel"
                     android:textColor="@color/md_grey_900"
-                    android:textSize="14sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -111,9 +112,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
-                    android:layout_marginBottom="6dp"
                     android:textColor="@color/md_red_300"
-                    android:textSize="14sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -121,8 +121,9 @@
             <com.ikco10.allbasketsignup.Utils.ClearEditText
                 android:id="@+id/cel"
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginBottom="20dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="40dp"
                 android:digits="0123456789+"
                 android:hint="@string/memberregister_celhint"
                 android:imeOptions="actionNext"
@@ -136,7 +137,7 @@
                 android:textColorHighlight="#2208A1E8"
                 android:textColorHint="@color/md_grey_500"
                 android:textCursorDrawable="@drawable/edittext_cursor"
-                android:textSize="15sp" />
+                android:textSize="22sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -147,11 +148,10 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
-                    android:layout_marginBottom="6dp"
                     android:layout_weight="1"
                     android:text="@string/memberregister_tel"
                     android:textColor="@color/md_grey_900"
-                    android:textSize="14sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -159,9 +159,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
-                    android:layout_marginBottom="6dp"
                     android:textColor="@color/md_red_300"
-                    android:textSize="14sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -169,8 +168,9 @@
             <com.ikco10.allbasketsignup.Utils.ClearEditText
                 android:id="@+id/membersearch_tel"
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginBottom="20dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="40dp"
                 android:digits="0123456789+"
                 android:hint="@string/memberregister_telhint"
                 android:imeOptions="actionNext"
@@ -184,7 +184,7 @@
                 android:textColorHighlight="#2208A1E8"
                 android:textColorHint="@color/md_grey_500"
                 android:textCursorDrawable="@drawable/edittext_cursor"
-                android:textSize="15sp" />
+                android:textSize="22sp" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -200,7 +200,7 @@
                     android:layout_marginStart="4dp"
                     android:text="@string/memberregister_addr"
                     android:textColor="@color/md_grey_900"
-                    android:textSize="14sp"
+                    android:textSize="20sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -208,13 +208,15 @@
 
                 <Button
                     android:id="@+id/addrsearch"
-                    android:layout_width="64dp"
-                    android:layout_height="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="48dp"
+                    android:paddingEnd="48dp"
                     android:background="@drawable/background_button"
                     android:stateListAnimator="@null"
                     android:text="@string/search"
                     android:textColor="@color/md_white_1000"
-                    android:textSize="14sp"
+                    android:textSize="20sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="@id/addrtext"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -225,8 +227,9 @@
             <com.ikco10.allbasketsignup.Utils.ClearEditText
                 android:id="@+id/membersearch_addr"
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginBottom="20dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="40dp"
                 android:hint="@string/memberregister_addrhint"
                 android:imeOptions="actionNext"
                 android:importantForAutofill="no"
@@ -240,22 +243,23 @@
                 android:textColorHighlight="#2208A1E8"
                 android:textColorHint="@color/md_grey_500"
                 android:textCursorDrawable="@drawable/edittext_cursor"
-                android:textSize="15sp" />
+                android:textSize="22sp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
-                android:layout_marginBottom="6dp"
                 android:text="@string/memberregister_email"
                 android:textColor="@color/md_grey_900"
-                android:textSize="14sp"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <com.ikco10.allbasketsignup.Utils.ClearEditText
                 android:id="@+id/email"
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="40dp"
                 android:hint="@string/memberregister_emailhint"
                 android:importantForAutofill="no"
                 android:inputType="textEmailAddress"
@@ -267,7 +271,7 @@
                 android:textColorHighlight="#2208A1E8"
                 android:textColorHint="@color/md_grey_500"
                 android:textCursorDrawable="@drawable/edittext_cursor"
-                android:textSize="15sp" />
+                android:textSize="22sp" />
 
         </LinearLayout>
 
@@ -275,7 +279,7 @@
 
     <LinearLayout
         android:id="@+id/welcome"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="vertical"
@@ -284,12 +288,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.45">
+        app:layout_constraintVertical_bias="0.3">
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/lottie"
-            android:layout_width="72dp"
-            android:layout_height="72dp"
+            android:layout_width="168dp"
+            android:layout_height="168dp"
             android:layout_marginBottom="24dp" />
 
         <TextView
@@ -298,37 +302,39 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
             android:gravity="center"
-            android:textColor="@color/md_grey_600"
-            android:textSize="24sp" />
+            android:textColor="@color/md_grey_900"
+            android:textSize="44sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
+            android:layout_marginBottom="36dp"
             android:text="@string/memberregister_welcome1"
             android:textColor="@color/md_grey_900"
-            android:textSize="40sp" />
+            android:textSize="80sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="50dp"
+            android:layout_marginBottom="88dp"
             android:text="@string/memberregister_welcome3"
             android:textColor="@color/md_grey_600"
-            android:textSize="16sp" />
+            android:textSize="32sp" />
 
         <Button
             android:id="@+id/confirm"
             style="?attr/buttonBarStyle"
             android:layout_width="match_parent"
-            android:layout_height="42dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginEnd="24dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="168dp"
+            android:layout_marginEnd="168dp"
+            android:paddingTop="14dp"
+            android:paddingBottom="14dp"
             android:background="@drawable/background_button"
             android:stateListAnimator="@null"
             android:text="@string/confirm"
             android:textColor="@color/md_white_1000"
-            android:textSize="18sp"
+            android:textSize="32sp"
             android:textStyle="bold" />
 
     </LinearLayout>

@@ -77,9 +77,8 @@ public class DialogMemberSignup extends DialogFragment {
         Dialog dialog = super.onCreateDialog(savedInstanceState);
         if (dialog.getWindow() != null) {
             dialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O_MR1) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O_MR1)
                 setWhiteNavigationBar(dialog);
-            }
         }
 
         return new Dialog(Objects.requireNonNull(getActivity()), getTheme()) {
@@ -151,7 +150,7 @@ public class DialogMemberSignup extends DialogFragment {
         mPrevious.setOnClickListener(new OnSingleClickListener() {
             @Override
             public void onSingleClick(View v) {
-                if (mTitle.getText().toString().equals("회원 가입")) {
+                if (mTitle.getText().toString().equals("정보 입력")) {
                     if (getActivity() != null) {
                         InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
                         if (imm != null)
@@ -166,7 +165,7 @@ public class DialogMemberSignup extends DialogFragment {
                         page = 1;
                         mView.requestFocus();
                         mViewPager.setCurrentItem(page);
-                        mTitle.setText("회원 가입");
+                        mTitle.setText("정보 입력");
                         mNext.setText("등록");
                         mNext.setVisibility(View.VISIBLE);
                     } else if (page == 1) {
@@ -187,7 +186,7 @@ public class DialogMemberSignup extends DialogFragment {
                 if (page == 0) {
                     page++;
                     mViewPager.setCurrentItem(page);
-                    mTitle.setText("회원 가입");
+                    mTitle.setText("정보 입력");
                     mNext.setText("등록");
                     mPrevious.setImageResource(R.drawable.ic_back);
                     mViewPager.getChildAt(1).findViewById(R.id.membersearch_name).requestFocus();
@@ -345,7 +344,7 @@ public class DialogMemberSignup extends DialogFragment {
 
                                     RetrofitApi retrofitApi = new RetrofitApi();
 
-                                    Observable<RepoResult> observable = retrofitApi.getApiTest().memsignup((JsonObject) jsonParser.parse(json.toString()));
+                                    Observable<RepoResult> observable = retrofitApi.getApi().memsignup((JsonObject) jsonParser.parse(json.toString()));
 
                                     mDisposable.add(observable.subscribeOn(Schedulers.io())
                                             .observeOn(AndroidSchedulers.mainThread())
@@ -364,7 +363,7 @@ public class DialogMemberSignup extends DialogFragment {
                                                     },
                                                     e -> {
                                                         if (getView() != null)
-                                                            Snackbar.make(getView(), "네트워크 오류", Snackbar.LENGTH_SHORT).show();
+                                                            Snackbar.make(getView(), "Error\n", Snackbar.LENGTH_SHORT).show();
                                                     },
                                                     () -> {
                                                     }
@@ -381,6 +380,7 @@ public class DialogMemberSignup extends DialogFragment {
         });
 
         return view;
+
     }
 
     static class DialogAdapter extends FragmentStatePagerAdapter {

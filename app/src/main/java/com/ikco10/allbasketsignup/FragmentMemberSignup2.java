@@ -290,7 +290,7 @@ public class FragmentMemberSignup2 extends Fragment implements PassMemberSignupA
     private void check(String num, final String type) {
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://allbasket7755.iptime.org:5143/test/")
+                .baseUrl("http://59.12.186.68:55282/allbasket/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
