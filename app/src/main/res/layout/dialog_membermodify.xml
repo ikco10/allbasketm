@@ -5,40 +5,41 @@
     android:background="@android:color/white">
 
     <LinearLayout
-        android:id="@+id/signup_header"
+        android:id="@+id/modify_header"
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@id/signup_headerLine"
+        app:layout_constraintBottom_toTopOf="@id/modify_headerLine"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
-            android:id="@+id/signup_back"
+            android:id="@+id/modify_back"
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:layout_marginStart="28dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="@string/ImageDescription"
-            android:padding="3dp"
             android:scaleType="centerInside"
             android:src="@drawable/ic_close" />
 
         <TextView
-            android:id="@+id/signup_title"
+            android:id="@+id/modify_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="@string/signup_title1"
+            android:text="@string/membermodify_title1"
             android:textColor="@color/md_grey_900"
             android:textSize="36sp"
             android:textStyle="bold" />
 
         <Button
-            android:id="@+id/signup_next"
+            android:id="@+id/modify_next"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_marginEnd="30dp"
@@ -54,22 +55,21 @@
     </LinearLayout>
 
     <View
-        android:id="@+id/signup_headerLine"
+        android:id="@+id/modify_headerLine"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="0.5dip"
         android:background="@color/md_grey_400"
-        app:layout_constraintBottom_toTopOf="@id/signup_viewPager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/signup_header" />
+        app:layout_constraintTop_toBottomOf="@id/modify_header" />
 
     <com.ikco10.allbasketm.Utils.ViewPagerNonSwipe
-        android:id="@+id/signup_viewPager"
+        android:id="@+id/modify_viewPager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/signup_headerLine" />
+        app:layout_constraintTop_toBottomOf="@id/modify_headerLine" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

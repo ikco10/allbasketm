@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.ikco10.allbasketsignup">
+    package="com.ikco10.allbasketm">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-feature android:name="android.hardware.screen.portrait" />
@@ -9,13 +9,13 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="올바스켓 회원등록"
+        android:label="올바스켓 멤버스"
         android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:targetApi="n">
-        <activity android:name=".MainActivity">
+        <activity android:name="com.ikco10.allbasketm.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

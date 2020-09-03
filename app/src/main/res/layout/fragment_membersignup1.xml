@@ -33,7 +33,7 @@
         app:layout_constraintStart_toEndOf="@id/check1"
         app:layout_constraintTop_toTopOf="@id/check1" />
 
-    <com.ikco10.allbasketsignup.FastScroller.FastScrollScrollView
+    <com.ikco10.allbasketm.FastScroller.FastScrollScrollView
         android:id="@+id/scrollview1"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -55,7 +55,7 @@
             android:textColor="@color/md_grey_900"
             android:textSize="20sp" />
 
-    </com.ikco10.allbasketsignup.FastScroller.FastScrollScrollView>
+    </com.ikco10.allbasketm.FastScroller.FastScrollScrollView>
 
     <CheckBox
         android:id="@+id/check2"
@@ -88,7 +88,7 @@
         app:layout_constraintStart_toEndOf="@id/check2"
         app:layout_constraintTop_toTopOf="@id/check2" />
 
-    <com.ikco10.allbasketsignup.FastScroller.FastScrollScrollView
+    <com.ikco10.allbasketm.FastScroller.FastScrollScrollView
         android:id="@+id/scrollview2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -110,7 +110,7 @@
             android:textColor="@color/md_grey_900"
             android:textSize="20sp" />
 
-    </com.ikco10.allbasketsignup.FastScroller.FastScrollScrollView>
+    </com.ikco10.allbasketm.FastScroller.FastScrollScrollView>
 
     <CheckBox
         android:id="@+id/check3"
