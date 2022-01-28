@@ -10,9 +10,12 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.TranslateAnimation;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +27,8 @@ import com.google.gson.annotations.SerializedName;
 import com.ikco10.allbasketm.Utils.ClearEditText;
 import com.ikco10.allbasketm.Utils.OnSingleClickListener;
 
+import java.util.Objects;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -33,8 +38,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
 @SuppressLint("ValidFragment")
 public class FragmentMemberSignup2 extends Fragment implements PassMemberSignupAddr {
 
-    private ClearEditText mCel, mTel, mAddr;
-    private TextView mCelOverLap, mTelOverLap;
+    private ClearEditText mName, mCel, mTel, mAddr;
+    private TextView mCelOverLap, mTelOverLap, mTitle;
+    private Button mNext;
+    private LinearLayout llAddr, llTel, llCel, llGender;
+    private RadioButton male, female;
 
     FragmentMemberSignup2() {
     }
@@ -50,16 +58,26 @@ public class FragmentMemberSignup2 extends Fragment implements PassMemberSignupA
 
         View view = inflater.inflate(R.layout.fragment_membersignup2, container, false);
 
+        mTitle = view.findViewById(R.id.title);
+        mName = view.findViewById(R.id.membersearch_name);
         mCel = view.findViewById(R.id.cel);
         mCelOverLap = view.findViewById(R.id.celOverlap);
         mTel = view.findViewById(R.id.membersearch_tel);
         mTelOverLap = view.findViewById(R.id.telOverlap);
         mAddr = view.findViewById(R.id.membersearch_addr);
-        Button addrBt = view.findViewById(R.id.addrsearch);
+        mNext = view.findViewById(R.id.next);
+        male = view.findViewById(R.id.male);
+        female = view.findViewById(R.id.female);
+
+        llAddr = view.findViewById(R.id.ll_addr);
+        llTel = view.findViewById(R.id.ll_tel);
+        llCel = view.findViewById(R.id.ll_cel);
+        llGender = view.findViewById(R.id.ll_gender);
 
         mAddr.setImeOptions(EditorInfo.IME_ACTION_NEXT);
         mAddr.setRawInputType(InputType.TYPE_CLASS_TEXT);
 
+        /*
         addrBt.setOnClickListener(new OnSingleClickListener() {
             @Override
             public void onSingleClick(View v) {
@@ -78,6 +96,88 @@ public class FragmentMemberSignup2 extends Fragment implements PassMemberSignupA
                         }
                     }
                 }, 300);
+            }
+        });
+        */
+
+        mName.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if (llGender.getVisibility() == View.GONE && mNext.getVisibility() == View.INVISIBLE && editable.toString().length() > 0) {
+                    slideUp(mNext);
+                } else if (llGender.getVisibility() == View.GONE && mNext.getVisibility() == View.GONE && editable.toString().length() > 0) {
+                    slideUp(mNext);
+                } else if (mNext.getVisibility() == View.VISIBLE && editable.toString().length() < 1) {
+                    slideDown(mNext);
+                }
+            }
+        });
+
+        mNext.setOnClickListener(new OnSingleClickListener() {
+            @Override
+            public void onSingleClick(View v) {
+                if (llGender.getVisibility() == View.GONE) {
+                    slideDown(mNext);
+                    if (getActivity() != null) {
+                        InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                        if (imm != null && getView() != null)
+                            imm.hideSoftInputFromWindow(getView().getWindowToken(), 0);
+                    }
+                    mTitle.setText("성별을 선택하세요");
+                    llGender.setVisibility(View.VISIBLE);
+                    mName.clearFocus();
+                } else if (llAddr.getVisibility() == View.GONE){
+                    llAddr.setVisibility(View.VISIBLE);
+                    mTitle.setText("주소를 입력하세요");
+                    slideDown(mNext);
+                    mAddr.requestFocus();
+                }
+            }
+        });
+
+        male.setOnClickListener(new OnSingleClickListener() {
+            @Override
+            public void onSingleClick(View v) {
+                male.setChecked(true);
+                female.setChecked(false);
+                if (llCel.getVisibility() == View.GONE) {
+                    llCel.setVisibility(View.VISIBLE);
+                    mTitle.setText("휴대폰 번호를 입력하세요");
+                    mCel.requestFocus();
+                    if (getActivity() != null) {
+                        InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                        if (imm != null) {
+                            imm.showSoftInput(mCel, 0);
+                        }
+                    }
+                }
+            }
+        });
+
+        female.setOnClickListener(new OnSingleClickListener() {
+            @Override
+            public void onSingleClick(View v) {
+                male.setChecked(true);
+                female.setChecked(false);
+                if (llCel.getVisibility() == View.GONE) {
+                    llCel.setVisibility(View.VISIBLE);
+                    mTitle.setText("휴대폰 번호를 입력하세요");
+                    mCel.requestFocus();
+                    if (getActivity() != null) {
+                        InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                        if (imm != null) {
+                            imm.showSoftInput(mCel, 0);
+                        }
+                    }
+                }
             }
         });
 
@@ -114,7 +214,7 @@ public class FragmentMemberSignup2 extends Fragment implements PassMemberSignupA
                             tempIp = new StringBuilder(strIp);
                         }
                         for (int count = 0; count < tempIp.length(); count++) {
-                            if (mCel.getText().toString().substring(0, 2).equals("02")) {
+                            if (mCel.getText().toString().startsWith("02")) {
                                 if (editable.length() < 12) {
                                     if (count == 2 || count == 5) {
                                         newIp.append("-");
@@ -132,7 +232,7 @@ public class FragmentMemberSignup2 extends Fragment implements PassMemberSignupA
                                         newIp.append(tempIp.charAt(count));
                                     }
                                 }
-                            } else if (mCel.getText().toString().substring(0, 1).equals("1")) {
+                            } else if (mCel.getText().toString().charAt(0) == '1') {
                                 if (count == 4 || count == 8) {
                                     newIp.append("-");
                                     newIp.append(tempIp.charAt(count));
@@ -140,7 +240,7 @@ public class FragmentMemberSignup2 extends Fragment implements PassMemberSignupA
                                 } else {
                                     newIp.append(tempIp.charAt(count));
                                 }
-                            } else if (mCel.getText().toString().substring(0, 1).equals("0")) {
+                            } else if (mCel.getText().toString().charAt(0) == '0') {
                                 if (editable.length() < 13) {
                                     if (count == 3 || count == 6) {
                                         newIp.append("-");
@@ -176,7 +276,9 @@ public class FragmentMemberSignup2 extends Fragment implements PassMemberSignupA
                 }
                 mCel.addTextChangedListener(this);
 
-                if (cursorPosition > 12 && mCel.getText() != null) {
+                if (!Objects.requireNonNull(mCel.getText()).toString().startsWith("010") && cursorPosition > 11 && mCel.getText() != null) {
+                    check(mCel.getText().toString(), "0");
+                } else if (cursorPosition > 12 && mCel.getText() != null) {
                     check(mCel.getText().toString(), "0");
                 }
             }
@@ -215,7 +317,7 @@ public class FragmentMemberSignup2 extends Fragment implements PassMemberSignupA
                             tempIp = new StringBuilder(strIp);
                         }
                         for (int count = 0; count < tempIp.length(); count++) {
-                            if (mTel.getText().toString().substring(0, 2).equals("02")) {
+                            if (mTel.getText().toString().startsWith("02")) {
                                 if (editable.length() < 12) {
                                     if (count == 2 || count == 5) {
                                         newIp.append("-");
@@ -233,7 +335,7 @@ public class FragmentMemberSignup2 extends Fragment implements PassMemberSignupA
                                         newIp.append(tempIp.charAt(count));
                                     }
                                 }
-                            } else if (mTel.getText().toString().substring(0, 1).equals("1")) {
+                            } else if (mTel.getText().toString().charAt(0) == '1') {
                                 if (count == 4 || count == 8) {
                                     newIp.append("-");
                                     newIp.append(tempIp.charAt(count));
@@ -241,7 +343,7 @@ public class FragmentMemberSignup2 extends Fragment implements PassMemberSignupA
                                 } else {
                                     newIp.append(tempIp.charAt(count));
                                 }
-                            } else if (mTel.getText().toString().substring(0, 1).equals("0")) {
+                            } else if (mTel.getText().toString().charAt(0) == '0') {
                                 if (editable.length() < 13) {
                                     if (count == 3 || count == 6) {
                                         newIp.append("-");
@@ -310,12 +412,20 @@ public class FragmentMemberSignup2 extends Fragment implements PassMemberSignupA
                 } else if (type.equals("1") && result != null && result.getResult().equals("exist")) {
                     mTel.setError("");
                     mTelOverLap.setText("등록된 전화 번호입니다");
+                } else if (llTel.getVisibility() == View.GONE){
+                    llTel.setVisibility(View.VISIBLE);
+                    mTitle.setText("전화 번호를 입력하세요 (선택)");
+                    slideUp(mNext);
+                    mTel.requestFocus();
+                } else if (llAddr.getVisibility() == View.GONE){
+                    llAddr.setVisibility(View.VISIBLE);
+                    mTitle.setText("주소를 입력하세요");
                 }
             }
 
             @Override
             public void onFailure(@NonNull Call<Result> call, @NonNull Throwable t) {
-                Toast.makeText(getContext(), "네트워크 오류", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), t.toString(), Toast.LENGTH_SHORT).show();
                 call.cancel();
             }
 
@@ -360,5 +470,28 @@ public class FragmentMemberSignup2 extends Fragment implements PassMemberSignupA
                 }
             }
         }, 350);
+    }
+
+    public void slideUp(View view) {
+        view.setVisibility(View.VISIBLE);
+        TranslateAnimation animate = new TranslateAnimation(
+                0,                 // fromXDelta
+                0,                 // toXDelta
+                view.getHeight(),  // fromYDelta
+                0);                // toYDelta
+        animate.setDuration(300);
+        view.startAnimation(animate);
+    }
+
+    // slide the view from its current position to below itself
+    public void slideDown(View view) {
+        TranslateAnimation animate = new TranslateAnimation(
+                0,                 // fromXDelta
+                0,                 // toXDelta
+                0,                 // fromYDelta
+                view.getHeight()); // toYDelta
+        animate.setDuration(300);
+        view.startAnimation(animate);
+        view.setVisibility(View.GONE);
     }
 }

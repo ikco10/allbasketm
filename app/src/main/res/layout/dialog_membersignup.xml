@@ -57,6 +57,7 @@
         android:id="@+id/signup_headerLine"
         android:layout_width="match_parent"
         android:layout_height="1dp"
+        android:visibility="invisible"
         android:background="@color/md_grey_400"
         app:layout_constraintBottom_toTopOf="@id/signup_viewPager"
         app:layout_constraintEnd_toEndOf="parent"

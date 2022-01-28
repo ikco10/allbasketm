@@ -15,8 +15,10 @@
     <string name="membersignup_termstitle3">이벤트 및 행사 정보 SMS 수신 동의&#160;&#160;(선택)</string>
 
     <string name="membersignup_title">회원 가입</string>
+    <string name="membersignup_nametitle">이름을 입력하세요</string>
     <string name="membersignup_name">이름</string>
     <string name="membersignup_namehint">(필수 항목)</string>
+
     <string name="membersignup_sms">SMS 수신</string>
     <string name="membersignup_cel">휴대폰 번호</string>
     <string name="membersignup_celhint">(필수 항목)</string>
@@ -27,8 +29,9 @@
     <string name="membersignup_addrhint">(필수 항목)</string>
     <string name="membersignup_email">이메일</string>
     <string name="membersignup_emailhint">(선택 항목)</string>
-    <string name="membersignup_male">남</string>
-    <string name="membersignup_female">여</string>
+    <string name="membersignup_gender">성별</string>
+    <string name="membersignup_male">남성</string>
+    <string name="membersignup_female">여성</string>
     <string name="membersignup_welcome1">환영합니다</string>
     <string name="membersignup_welcome2">님 회원가입이 완료되었습니다</string>
     <string name="membersignup_welcome3">올바스켓 멤버십 혜택과 함께하세요</string>

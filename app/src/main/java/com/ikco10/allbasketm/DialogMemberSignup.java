@@ -81,7 +81,7 @@ public class DialogMemberSignup extends DialogFragment {
                 setWhiteNavigationBar(dialog);
         }
 
-        return new Dialog(Objects.requireNonNull(getActivity()), getTheme()) {
+        return new Dialog(requireActivity(), getTheme()) {
             @Override
             public void onBackPressed() {
                 if (mTitle.getText().toString().equals("회원 가입")) {
@@ -186,7 +186,7 @@ public class DialogMemberSignup extends DialogFragment {
                 if (page == 0) {
                     page++;
                     mViewPager.setCurrentItem(page);
-                    mTitle.setText("정보 입력");
+                    mTitle.setText("회원 가입");
                     mNext.setText("등록");
                     mPrevious.setImageResource(R.drawable.ic_back);
                     mViewPager.getChildAt(1).findViewById(R.id.membersearch_name).requestFocus();
