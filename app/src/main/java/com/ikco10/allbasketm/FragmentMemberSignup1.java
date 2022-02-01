@@ -6,13 +6,15 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
+import android.view.animation.TranslateAnimation;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import com.animsh.animatedcheckbox.AnimatedCheckBox;
 import com.ikco10.allbasketm.FastScroller.FastScrollScrollView;
 import com.ikco10.allbasketm.FastScroller.FastScrollerBuilder;
 
@@ -35,8 +37,11 @@ public class FragmentMemberSignup1 extends Fragment {
         FastScrollScrollView scrollView2 = view.findViewById(R.id.scrollview2);
         TextView termsTV1 = view.findViewById(R.id.terms1);
         TextView termsTV2 = view.findViewById(R.id.terms2);
-        CheckBox checkBox1 = view.findViewById(R.id.check1);
-        CheckBox checkBox2 = view.findViewById(R.id.check2);
+        AnimatedCheckBox checkBoxAll = view.findViewById(R.id.checkall);
+        AnimatedCheckBox checkBox1 = view.findViewById(R.id.check1);
+        AnimatedCheckBox checkBox2 = view.findViewById(R.id.check2);
+        AnimatedCheckBox checkBox3 = view.findViewById(R.id.check3);
+        Button next = view.findViewById(R.id.next);
 
         StringBuilder terms1 = new StringBuilder();
         StringBuilder terms2 = new StringBuilder();
@@ -44,7 +49,7 @@ public class FragmentMemberSignup1 extends Fragment {
         new FastScrollerBuilder(scrollView1).setTrackDrawable(Objects.requireNonNull(ContextCompat.getDrawable(mContext, R.drawable.ic_track))).build();
         new FastScrollerBuilder(scrollView2).setTrackDrawable(Objects.requireNonNull(ContextCompat.getDrawable(mContext, R.drawable.ic_track))).build();
 
-        terms1.append("\n올바스켓 멤버십 이용약관\n" +
+        terms1.append("올바스켓 멤버십 이용약관\n" +
                 "\n" +
                 "제1장 총칙\n" +
                 "\n" +
@@ -149,7 +154,7 @@ public class FragmentMemberSignup1 extends Fragment {
                 "(1) 본 약관에서 정하지 않은 사항과 본 약관의 해석에 관하여는 대한민국 관련 법령 및 상관례에 따릅니다.\n" +
                 "(2) 본 약관에 의한 서비스 이용과 관련한 제반 분쟁 및 소송은 회원의 주소를 관할하는 법원에 의하고, 주소가 없는 경우에는 거주하는 곳을 관할하는 지방법원의 전속관할로 합니다. 다만, 제소 당시 이용자의 주소 또는 거주하는 곳이 분명하지 않거나 외국 거주자의 경우에는 민사소송법상의 관할법원에 제기합니다.\n");
 
-        terms2.append("\n 정보통신망법 규정에 따라 올바스켓에 회원가입 신청하시는 분께 수집하는 개인정보의 항목, 개인정보의 수집 및 이용목적을 안내 드리오니 자세히 읽은 후 동의하여 주시기 바랍니다.\n" +
+        terms2.append("정보통신망법 규정에 따라 올바스켓에 회원가입 신청하시는 분께 수집하는 개인정보의 항목, 개인정보의 수집 및 이용목적을 안내 드리오니 자세히 읽은 후 동의하여 주시기 바랍니다.\n" +
                 "\n" +
                 "1. 수집하는 개인정보\n" +
                 "고객은 회원가입을 하지 않아도 상품 구매 및 할인 서비스를 회원과 동일하게 이용할 수 있습니다. 고객이 멤버십 포인트 서비스를 이용하기 위해 회원가입을 할 경우, 올바스켓은 서비스 이용을 위해 필요한 최소한의 개인정보를 수집합니다.\n" +
@@ -174,34 +179,78 @@ public class FragmentMemberSignup1 extends Fragment {
         termsTV1.setText(terms1);
         termsTV2.setText(terms2);
 
+        checkBoxAll.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                if (!checkBox1.isChecked()) {
+                    checkBox1.setChecked(true);
+                }
+                if (!checkBox2.isChecked()) {
+                    checkBox2.setChecked(true);
+                }
+                if (!checkBox3.isChecked()) {
+                    checkBox3.setChecked(true);
+                }
+            } else {
+                if (checkBox1.isChecked()) {
+                    checkBox1.setChecked(false);
+                }
+                if (checkBox2.isChecked()) {
+                    checkBox2.setChecked(false);
+                }
+                if (checkBox3.isChecked()) {
+                    checkBox3.setChecked(false);
+                }
+            }
+        });
+
         checkBox1.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (checkBox1.isChecked() && checkBox2.isChecked()) {
                 if (getParentFragment() != null) {
-                    ((DialogMemberSignup) getParentFragment()).mNext.setEnabled(true);
-                    ((DialogMemberSignup) getParentFragment()).mNext.setTextColor(getResources().getColor(R.color.colorPrimary));
+                    slideUp(next);
                 }
             } else {
-                if (getParentFragment() != null) {
-                    ((DialogMemberSignup) getParentFragment()).mNext.setEnabled(false);
-                    ((DialogMemberSignup) getParentFragment()).mNext.setTextColor(getResources().getColor(R.color.md_white_1000));
+                if (next.getVisibility() == View.VISIBLE && getParentFragment() != null) {
+                    slideDown(next);
                 }
             }
         });
 
         checkBox2.setOnCheckedChangeListener((buttonView, isChecked) -> {
-                if (checkBox1.isChecked() && checkBox2.isChecked()) {
-                    if (getParentFragment() != null) {
-                        ((DialogMemberSignup) getParentFragment()).mNext.setEnabled(true);
-                        ((DialogMemberSignup) getParentFragment()).mNext.setTextColor(getResources().getColor(R.color.colorPrimary));
-                    }
-                } else {
-                    if (getParentFragment() != null) {
-                        ((DialogMemberSignup) getParentFragment()).mNext.setEnabled(false);
-                        ((DialogMemberSignup) getParentFragment()).mNext.setTextColor(getResources().getColor(R.color.md_white_1000));
-                    }
+            if (checkBox1.isChecked() && checkBox2.isChecked()) {
+                if (getParentFragment() != null) {
+                    slideUp(next);
                 }
+            } else {
+                if (next.getVisibility() == View.VISIBLE && getParentFragment() != null) {
+                    slideDown(next);
+                }
+            }
         });
 
         return view;
     }
+
+    public void slideUp(View view) {
+        view.setVisibility(View.VISIBLE);
+        TranslateAnimation animate = new TranslateAnimation(
+                0,                 // fromXDelta
+                0,                 // toXDelta
+                view.getHeight(),  // fromYDelta
+                0);                // toYDelta
+        animate.setDuration(300);
+        view.startAnimation(animate);
+    }
+
+    // slide the view from its current position to below itself
+    public void slideDown(View view) {
+        TranslateAnimation animate = new TranslateAnimation(
+                0,                 // fromXDelta
+                0,                 // toXDelta
+                0,                 // fromYDelta
+                view.getHeight()); // toYDelta
+        animate.setDuration(300);
+        view.startAnimation(animate);
+        view.setVisibility(View.GONE);
+    }
+
 }

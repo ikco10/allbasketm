@@ -2,23 +2,71 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
     android:background="@android:color/white"
     android:orientation="vertical">
 
-    <CheckBox
-        android:id="@+id/check1"
+    <com.animsh.animatedcheckbox.AnimatedCheckBox
+        android:id="@+id/checkall"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:checked="false"
+        app:border_stroke_width="3dp"
+        app:color_checked="@color/colorPrimary"
+        app:color_tick="@color/md_white_1000"
+        app:color_unchecked="@color/md_white_1000"
+        app:color_unchecked_stroke="@color/md_grey_400"
+        app:duration="@integer/material_motion_duration_medium_1"
+        app:layout_constraintBottom_toTopOf="@+id/divider"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:small_tick="true"
+        app:tick_stroke_width="3dp" />
+
+    <TextView
+        android:id="@+id/termsall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:paddingBottom="2dp"
+        android:text="@string/membersignup_termstitleall"
+        android:textColor="@color/md_grey_900"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/checkall"
+        app:layout_constraintStart_toEndOf="@id/checkall"
+        app:layout_constraintTop_toTopOf="@id/checkall" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="24dp"
+        android:background="@color/md_grey_400"
+        app:layout_constraintTop_toBottomOf="@id/termsall" />
+
+    <com.animsh.animatedcheckbox.AnimatedCheckBox
+        android:id="@+id/check1"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="16dp"
         android:checked="false"
-        android:scaleX="1.4"
-        android:scaleY="1.4"
+        app:border_stroke_width="3dp"
+        app:color_checked="@color/colorPrimary"
+        app:color_tick="@color/md_white_1000"
+        app:color_unchecked="@color/md_white_1000"
+        app:color_unchecked_stroke="@color/md_grey_400"
+        app:duration="@integer/material_motion_duration_medium_1"
         app:layout_constraintBottom_toTopOf="@+id/scrollview1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/divider"
+        app:small_tick="true"
+        app:tick_stroke_width="3dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -26,14 +74,15 @@
         android:layout_marginStart="12dp"
         android:paddingBottom="2dp"
         android:text="@string/membersignup_termstitle1"
-        android:textColor="@color/colorPrimary"
-        android:textSize="22sp"
+        android:textColor="@color/md_grey_900"
+        android:textSize="26sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@id/check1"
         app:layout_constraintStart_toEndOf="@id/check1"
         app:layout_constraintTop_toTopOf="@id/check1" />
 
     <com.ikco10.allbasketm.FastScroller.FastScrollScrollView
+        android:visibility="gone"
         android:id="@+id/scrollview1"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -57,23 +106,26 @@
 
     </com.ikco10.allbasketm.FastScroller.FastScrollScrollView>
 
-    <CheckBox
+    <com.animsh.animatedcheckbox.AnimatedCheckBox
         android:id="@+id/check2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="16dp"
         android:checked="false"
-        android:scaleX="1.4"
-        android:scaleY="1.4"
-        android:textColor="@color/colorPrimary"
-        android:textSize="24sp"
-        android:textStyle="bold"
+        app:border_stroke_width="3dp"
+        app:color_checked="@color/colorPrimary"
+        app:color_tick="@color/md_white_1000"
+        app:color_unchecked="@color/md_white_1000"
+        app:color_unchecked_stroke="@color/md_grey_400"
+        app:duration="@integer/material_motion_duration_medium_1"
         app:layout_constraintBottom_toTopOf="@+id/scrollview2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/scrollview1" />
+        app:layout_constraintTop_toBottomOf="@id/scrollview1"
+        app:small_tick="true"
+        app:tick_stroke_width="3dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -81,8 +133,8 @@
         android:layout_marginStart="12dp"
         android:paddingBottom="2dp"
         android:text="@string/membersignup_termstitle2"
-        android:textColor="@color/colorPrimary"
-        android:textSize="22sp"
+        android:textColor="@color/md_grey_900"
+        android:textSize="26sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@id/check2"
         app:layout_constraintStart_toEndOf="@id/check2"
@@ -90,6 +142,7 @@
 
     <com.ikco10.allbasketm.FastScroller.FastScrollScrollView
         android:id="@+id/scrollview2"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="32dp"
@@ -112,23 +165,25 @@
 
     </com.ikco10.allbasketm.FastScroller.FastScrollScrollView>
 
-    <CheckBox
+    <com.animsh.animatedcheckbox.AnimatedCheckBox
         android:id="@+id/check3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="24dp"
         android:checked="false"
-        android:scaleX="1.4"
-        android:scaleY="1.4"
-        android:textColor="@color/colorPrimary"
-        android:textSize="24sp"
-        android:textStyle="bold"
+        app:border_stroke_width="3dp"
+        app:color_checked="@color/colorPrimary"
+        app:color_tick="@color/md_white_1000"
+        app:color_unchecked="@color/md_white_1000"
+        app:color_unchecked_stroke="@color/md_grey_400"
+        app:duration="@integer/material_motion_duration_medium_1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/scrollview2" />
+        app:layout_constraintTop_toBottomOf="@id/scrollview2"
+        app:small_tick="true"
+        app:tick_stroke_width="3dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -136,11 +191,30 @@
         android:layout_marginStart="12dp"
         android:paddingBottom="2dp"
         android:text="@string/membersignup_termstitle3"
-        android:textColor="@color/colorPrimary"
-        android:textSize="22sp"
+        android:textColor="@color/md_grey_900"
+        android:textSize="26sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@id/check3"
         app:layout_constraintStart_toEndOf="@id/check3"
         app:layout_constraintTop_toTopOf="@id/check3" />
+
+    <Button
+        android:id="@+id/next"
+        style="?attr/buttonBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:animateLayoutChanges="true"
+        android:visibility="invisible"
+        android:background="@drawable/background_button_rect"
+        android:paddingTop="14dp"
+        android:paddingBottom="14dp"
+        android:stateListAnimator="@null"
+        android:text="@string/next"
+        android:textColor="@color/md_white_1000"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

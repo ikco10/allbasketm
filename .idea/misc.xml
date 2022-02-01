@@ -4,10 +4,14 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/allbasket/StudioProjects/allbasketm/app/src/main/res/drawable/background_button_rect.xml" value="0.2734375" />
+        <entry key="..\:/Users/allbasket/StudioProjects/allbasketm/app/src/main/res/layout/activity_main.xml" value="0.14013671875" />
+        <entry key="..\:/Users/allbasket/StudioProjects/allbasketm/app/src/main/res/layout/dialog_address.xml" value="0.18205128205128204" />
+        <entry key="..\:/Users/allbasket/StudioProjects/allbasketm/app/src/main/res/layout/dialog_membermodify.xml" value="0.16722169362511893" />
         <entry key="..\:/Users/allbasket/StudioProjects/allbasketm/app/src/main/res/layout/dialog_membersignup.xml" value="0.11987179487179488" />
         <entry key="..\:/Users/allbasket/StudioProjects/allbasketm/app/src/main/res/layout/fragment_membermodify1.xml" value="0.11987179487179488" />
         <entry key="..\:/Users/allbasket/StudioProjects/allbasketm/app/src/main/res/layout/fragment_membersignup1.xml" value="0.11987179487179488" />
         <entry key="..\:/Users/allbasket/StudioProjects/allbasketm/app/src/main/res/layout/fragment_membersignup2.xml" value="0.11987179487179488" />
+        <entry key="..\:/Users/allbasket/StudioProjects/allbasketm/app/src/main/res/layout/fragment_membersignup3.xml" value="0.16722169362511893" />
       </map>
     </option>
   </component>

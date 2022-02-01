@@ -41,7 +41,7 @@ public class FragmentMemberSignup2 extends Fragment implements PassMemberSignupA
     private ClearEditText mName, mCel, mTel, mAddr;
     private TextView mCelOverLap, mTelOverLap, mTitle;
     private Button mNext;
-    private LinearLayout llAddr, llTel, llCel, llGender;
+    private LinearLayout llAddr, llCel, llGender;
     private RadioButton male, female;
 
     FragmentMemberSignup2() {
@@ -70,35 +70,10 @@ public class FragmentMemberSignup2 extends Fragment implements PassMemberSignupA
         female = view.findViewById(R.id.female);
 
         llAddr = view.findViewById(R.id.ll_addr);
-        llTel = view.findViewById(R.id.ll_tel);
         llCel = view.findViewById(R.id.ll_cel);
         llGender = view.findViewById(R.id.ll_gender);
 
-        mAddr.setImeOptions(EditorInfo.IME_ACTION_NEXT);
         mAddr.setRawInputType(InputType.TYPE_CLASS_TEXT);
-
-        /*
-        addrBt.setOnClickListener(new OnSingleClickListener() {
-            @Override
-            public void onSingleClick(View v) {
-                Handler handler = new Handler();
-                handler.postDelayed(() -> {
-                    if (getParentFragment() != null) {
-                        if (getView() != null)
-                            ((DialogMemberSignup) getParentFragment()).mView = getView().findFocus();
-                        ((DialogMemberSignup) getParentFragment()).setCurrentItem(2);
-                        ((DialogMemberSignup) getParentFragment()).mNext.setVisibility(View.INVISIBLE);
-                        ((DialogMemberSignup) getParentFragment()).mTitle.setText("주소 검색");
-                        if (getActivity() != null) {
-                            InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-                            if (imm != null)
-                                imm.showSoftInput(view, 0);
-                        }
-                    }
-                }, 300);
-            }
-        });
-        */
 
         mName.addTextChangedListener(new TextWatcher() {
             @Override
@@ -120,6 +95,45 @@ public class FragmentMemberSignup2 extends Fragment implements PassMemberSignupA
                 }
             }
         });
+
+        mAddr.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if (editable.length() < 1){
+                    Handler handler = new Handler();
+                    handler.postDelayed(() -> {
+                        if (getParentFragment() != null) {
+                            if (getView() != null)
+                                ((DialogMemberSignup) getParentFragment()).mView = getView().findFocus();
+                            ((DialogMemberSignup) getParentFragment()).setCurrentItem(2);
+                            ((DialogMemberSignup) getParentFragment()).mNext.setVisibility(View.INVISIBLE);
+                            ((DialogMemberSignup) getParentFragment()).mTitle.setText("주소 검색");
+                            if (getActivity() != null) {
+                                InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                                if (imm != null)
+                                    imm.showSoftInput(mAddr, 0);
+                            }
+                        }
+                    }, 300);
+                }
+                if (llGender.getVisibility() == View.GONE && mNext.getVisibility() == View.INVISIBLE && editable.toString().length() > 0) {
+                    slideUp(mNext);
+                } else if (llGender.getVisibility() == View.GONE && mNext.getVisibility() == View.GONE && editable.toString().length() > 0) {
+                    slideUp(mNext);
+                } else if (mNext.getVisibility() == View.VISIBLE && editable.toString().length() < 1) {
+                    slideDown(mNext);
+                }
+            }
+        });
+
 
         mNext.setOnClickListener(new OnSingleClickListener() {
             @Override
@@ -412,13 +426,25 @@ public class FragmentMemberSignup2 extends Fragment implements PassMemberSignupA
                 } else if (type.equals("1") && result != null && result.getResult().equals("exist")) {
                     mTel.setError("");
                     mTelOverLap.setText("등록된 전화 번호입니다");
-                } else if (llTel.getVisibility() == View.GONE){
-                    llTel.setVisibility(View.VISIBLE);
-                    mTitle.setText("전화 번호를 입력하세요 (선택)");
-                    slideUp(mNext);
-                    mTel.requestFocus();
                 } else if (llAddr.getVisibility() == View.GONE){
+                    Handler handler = new Handler();
+                    handler.postDelayed(() -> {
+                        if (getParentFragment() != null) {
+                            if (getView() != null)
+                                ((DialogMemberSignup) getParentFragment()).mView = getView().findFocus();
+                            ((DialogMemberSignup) getParentFragment()).setCurrentItem(2);
+                            ((DialogMemberSignup) getParentFragment()).mNext.setVisibility(View.INVISIBLE);
+                            ((DialogMemberSignup) getParentFragment()).mTitle.setText("주소 검색");
+                            if (getActivity() != null) {
+                                InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                                if (imm != null)
+                                    imm.showSoftInput(mAddr, 0);
+                            }
+                        }
+                    }, 300);
+
                     llAddr.setVisibility(View.VISIBLE);
+                    mAddr.requestFocus();
                     mTitle.setText("주소를 입력하세요");
                 }
             }

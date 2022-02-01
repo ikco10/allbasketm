@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:background="@android:color/white">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/signup_header"
         android:layout_width="match_parent"
         android:layout_height="80dp"
@@ -24,6 +24,9 @@
             android:contentDescription="@string/ImageDescription"
             android:padding="3dp"
             android:scaleType="centerInside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             android:src="@drawable/ic_close" />
 
         <TextView
@@ -34,6 +37,10 @@
             android:gravity="center"
             android:text="@string/signup_title1"
             android:textColor="@color/md_grey_900"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             android:textSize="36sp"
             android:textStyle="bold" />
 
@@ -48,10 +55,13 @@
             android:minHeight="0dp"
             android:text="@string/next"
             android:textColor="@color/md_white_1000"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             android:textSize="30sp"
             android:textStyle="bold" />
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <View
         android:id="@+id/signup_headerLine"

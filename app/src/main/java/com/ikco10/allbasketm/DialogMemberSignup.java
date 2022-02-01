@@ -185,7 +185,7 @@ public class DialogMemberSignup extends DialogFragment {
             public void onSingleClick(View v) {
                 if (page == 0) {
                     page++;
-                    mViewPager.setCurrentItem(page);
+                    mViewPager.setCurrentItem(page, false);
                     mTitle.setText("회원 가입");
                     mNext.setText("등록");
                     mPrevious.setImageResource(R.drawable.ic_back);

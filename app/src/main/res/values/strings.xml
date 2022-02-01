@@ -10,7 +10,8 @@
 
 
     <string name="signup_title1">약관 동의</string>
-    <string name="membersignup_termstitle1">올바스켓 이용약관 동의&#160;&#160;(필수)</string>
+    <string name="membersignup_termstitleall">약관 전체 동의</string>
+    <string name="membersignup_termstitle1">이용약관 동의&#160;&#160;(필수)</string>
     <string name="membersignup_termstitle2">개인정보 수집 및 이용 동의&#160;&#160;(필수)</string>
     <string name="membersignup_termstitle3">이벤트 및 행사 정보 SMS 수신 동의&#160;&#160;(선택)</string>
 
