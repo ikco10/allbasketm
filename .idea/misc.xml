@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/User/AndroidStudioProjects/allbasketm/app/src/main/res/layout/dialog_membersignup.xml" value="0.15651041666666668" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/allbasketm/app/src/main/res/layout/fragment_membersignup1.xml" value="0.15651041666666668" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/allbasketm/app/src/main/res/layout/fragment_membersignup2.xml" value="0.15651041666666668" />
         <entry key="..\:/Users/allbasket/StudioProjects/allbasketm/app/src/main/res/drawable/background_button_rect.xml" value="0.2734375" />
         <entry key="..\:/Users/allbasket/StudioProjects/allbasketm/app/src/main/res/layout/activity_main.xml" value="0.14013671875" />
         <entry key="..\:/Users/allbasket/StudioProjects/allbasketm/app/src/main/res/layout/dialog_address.xml" value="0.18205128205128204" />
@@ -15,7 +18,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_16_PREVIEW" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

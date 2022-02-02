@@ -2,9 +2,14 @@ package com.ikco10.allbasketm;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.view.View;
+import android.view.Window;
 import android.widget.Button;
+
+import com.ikco10.allbasketm.Utils.OnSingleClickListener;
 
 import java.lang.ref.WeakReference;
 
@@ -21,18 +26,24 @@ public class MainActivity extends AppCompatActivity {
         Button signupBT = findViewById(R.id.activity_main_signupbt);
         Button modifyBT = findViewById(R.id.activity_main_modifybt);
 
-        signupBT.setOnClickListener(v -> {
-            DialogMemberSignup dialogMemberSignup = new DialogMemberSignup();
-            dialogMemberSignup.setCancelable(false);
-            if (getFragmentManager() != null)
-                dialogMemberSignup.show(getSupportFragmentManager(), "DialogMemberSignup");
+        signupBT.setOnClickListener(new OnSingleClickListener() {
+            @Override
+            public void onSingleClick(View v) {
+                DialogMemberSignup dialogMemberSignup = new DialogMemberSignup();
+                dialogMemberSignup.setCancelable(false);
+                if (getFragmentManager() != null)
+                    dialogMemberSignup.show(getSupportFragmentManager(), "DialogMemberSignup");
+            }
         });
 
-        modifyBT.setOnClickListener(v -> {
-            DialogMemberModify dialogMemberModify = new DialogMemberModify();
-            dialogMemberModify.setCancelable(false);
-            if (getFragmentManager() != null)
-                dialogMemberModify.show(getSupportFragmentManager(), "DialogMemberModify");
+        modifyBT.setOnClickListener(new OnSingleClickListener() {
+            @Override
+            public void onSingleClick(View v) {
+                DialogMemberModify dialogMemberModify = new DialogMemberModify();
+                dialogMemberModify.setCancelable(false);
+                if (getFragmentManager() != null)
+                    dialogMemberModify.show(getSupportFragmentManager(), "DialogMemberModify");
+            }
         });
 
     }

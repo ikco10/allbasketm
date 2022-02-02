@@ -75,27 +75,6 @@ public class FragmentMemberSignup2 extends Fragment implements PassMemberSignupA
 
         mAddr.setRawInputType(InputType.TYPE_CLASS_TEXT);
 
-        mName.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-            }
-
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                if (llGender.getVisibility() == View.GONE && mNext.getVisibility() == View.INVISIBLE && editable.toString().length() > 0) {
-                    slideUp(mNext);
-                } else if (llGender.getVisibility() == View.GONE && mNext.getVisibility() == View.GONE && editable.toString().length() > 0) {
-                    slideUp(mNext);
-                } else if (mNext.getVisibility() == View.VISIBLE && editable.toString().length() < 1) {
-                    slideDown(mNext);
-                }
-            }
-        });
-
         mAddr.addTextChangedListener(new TextWatcher() {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
@@ -139,7 +118,6 @@ public class FragmentMemberSignup2 extends Fragment implements PassMemberSignupA
             @Override
             public void onSingleClick(View v) {
                 if (llGender.getVisibility() == View.GONE) {
-                    slideDown(mNext);
                     if (getActivity() != null) {
                         InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
                         if (imm != null && getView() != null)

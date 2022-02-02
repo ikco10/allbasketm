@@ -60,7 +60,7 @@ import io.reactivex.schedulers.Schedulers;
 @SuppressLint("ValidFragment")
 public class DialogMemberSignup extends DialogFragment {
 
-    private CompositeDisposable mDisposable = new CompositeDisposable();
+    private final CompositeDisposable mDisposable = new CompositeDisposable();
     private ViewPagerNonSwipe mViewPager;
     private int page = 0;
     private ImageButton mPrevious;
@@ -98,13 +98,13 @@ public class DialogMemberSignup extends DialogFragment {
                     } else if (mViewPager.getCurrentItem() == 2) {
                         mView.requestFocus();
                         page = 1;
-                        mViewPager.setCurrentItem(page);
+                        mViewPager.setCurrentItem(page, false);
                         mTitle.setText("회원 가입");
                         mNext.setText("등록");
                         mNext.setVisibility(View.VISIBLE);
                     } else if (page == 1 && mTitle.getText().toString().equals("회원 가입")) {
                         page--;
-                        mViewPager.setCurrentItem(page);
+                        mViewPager.setCurrentItem(page,false);
                         mTitle.setText("약관 동의");
                         mNext.setText("다음");
                         mNext.setVisibility(View.VISIBLE);
@@ -145,7 +145,7 @@ public class DialogMemberSignup extends DialogFragment {
         mViewPager = view.findViewById(R.id.signup_viewPager);
         mViewPager.setOffscreenPageLimit(2);
         mViewPager.setAdapter(adapter);
-        mViewPager.setCurrentItem(page);
+        mViewPager.setCurrentItem(page, false);
 
         mPrevious.setOnClickListener(new OnSingleClickListener() {
             @Override
@@ -164,13 +164,13 @@ public class DialogMemberSignup extends DialogFragment {
                     } else if (mViewPager.getCurrentItem() == 2) {
                         page = 1;
                         mView.requestFocus();
-                        mViewPager.setCurrentItem(page);
+                        mViewPager.setCurrentItem(page,false);
                         mTitle.setText("정보 입력");
                         mNext.setText("등록");
                         mNext.setVisibility(View.VISIBLE);
                     } else if (page == 1) {
                         page--;
-                        mViewPager.setCurrentItem(page);
+                        mViewPager.setCurrentItem(page,false);
                         mTitle.setText("약관 동의");
                         mNext.setText("다음");
                         mNext.setVisibility(View.VISIBLE);

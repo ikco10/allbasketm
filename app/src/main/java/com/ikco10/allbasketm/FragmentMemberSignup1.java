@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -17,6 +18,7 @@ import androidx.fragment.app.Fragment;
 import com.animsh.animatedcheckbox.AnimatedCheckBox;
 import com.ikco10.allbasketm.FastScroller.FastScrollScrollView;
 import com.ikco10.allbasketm.FastScroller.FastScrollerBuilder;
+import com.ikco10.allbasketm.Utils.OnSingleClickListener;
 
 import java.util.Objects;
 
@@ -24,6 +26,11 @@ import java.util.Objects;
 public class FragmentMemberSignup1 extends Fragment {
 
     Context mContext = MainActivity.getAppContext();
+    private AnimatedCheckBox checkBoxAll;
+    private AnimatedCheckBox checkBox1;
+    private AnimatedCheckBox checkBox2;
+    private AnimatedCheckBox checkBox3;
+    private Button next;
 
     FragmentMemberSignup1() {
     }
@@ -37,11 +44,13 @@ public class FragmentMemberSignup1 extends Fragment {
         FastScrollScrollView scrollView2 = view.findViewById(R.id.scrollview2);
         TextView termsTV1 = view.findViewById(R.id.terms1);
         TextView termsTV2 = view.findViewById(R.id.terms2);
-        AnimatedCheckBox checkBoxAll = view.findViewById(R.id.checkall);
-        AnimatedCheckBox checkBox1 = view.findViewById(R.id.check1);
-        AnimatedCheckBox checkBox2 = view.findViewById(R.id.check2);
-        AnimatedCheckBox checkBox3 = view.findViewById(R.id.check3);
-        Button next = view.findViewById(R.id.next);
+        ImageButton expand1 = view.findViewById(R.id.expand_terms1);
+        ImageButton expand2 = view.findViewById(R.id.expand_terms2);
+        checkBoxAll = view.findViewById(R.id.checkall);
+        checkBox1 = view.findViewById(R.id.check1);
+        checkBox2 = view.findViewById(R.id.check2);
+        checkBox3 = view.findViewById(R.id.check3);
+        next = view.findViewById(R.id.next);
 
         StringBuilder terms1 = new StringBuilder();
         StringBuilder terms2 = new StringBuilder();
@@ -179,50 +188,53 @@ public class FragmentMemberSignup1 extends Fragment {
         termsTV1.setText(terms1);
         termsTV2.setText(terms2);
 
-        checkBoxAll.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if (isChecked) {
-                if (!checkBox1.isChecked()) {
-                    checkBox1.setChecked(true);
-                }
-                if (!checkBox2.isChecked()) {
-                    checkBox2.setChecked(true);
-                }
-                if (!checkBox3.isChecked()) {
-                    checkBox3.setChecked(true);
-                }
-            } else {
-                if (checkBox1.isChecked()) {
-                    checkBox1.setChecked(false);
-                }
-                if (checkBox2.isChecked()) {
-                    checkBox2.setChecked(false);
-                }
-                if (checkBox3.isChecked()) {
-                    checkBox3.setChecked(false);
+        expand1.setOnClickListener(new OnSingleClickListener() {
+            @Override
+            public void onSingleClick(View v) {
+                if (scrollView1.getVisibility() == View.GONE) {
+                    expand1.setImageResource(R.drawable.ic_arrow_up);
+                    scrollView1.setVisibility(View.VISIBLE);
+                } else {
+                    expand1.setImageResource(R.drawable.ic_arrow_down);
+                    scrollView1.setVisibility(View.GONE);
                 }
             }
+        });
+
+        expand2.setOnClickListener(new OnSingleClickListener() {
+            @Override
+            public void onSingleClick(View v) {
+                if (scrollView2.getVisibility() == View.GONE) {
+                    expand2.setImageResource(R.drawable.ic_arrow_up);
+                    scrollView2.setVisibility(View.VISIBLE);
+                } else {
+                    expand2.setImageResource(R.drawable.ic_arrow_down);
+                    scrollView2.setVisibility(View.GONE);
+                }
+            }
+        });
+
+        checkBoxAll.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            checkCheckBox(buttonView);
         });
 
         checkBox1.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if (checkBox1.isChecked() && checkBox2.isChecked()) {
-                if (getParentFragment() != null) {
-                    slideUp(next);
-                }
-            } else {
-                if (next.getVisibility() == View.VISIBLE && getParentFragment() != null) {
-                    slideDown(next);
-                }
-            }
+            checkCheckBox(buttonView);
         });
 
         checkBox2.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if (checkBox1.isChecked() && checkBox2.isChecked()) {
+            checkCheckBox(buttonView);
+        });
+
+        checkBox3.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            checkCheckBox(buttonView);
+        });
+
+        next.setOnClickListener(new OnSingleClickListener() {
+            @Override
+            public void onSingleClick(View v) {
                 if (getParentFragment() != null) {
-                    slideUp(next);
-                }
-            } else {
-                if (next.getVisibility() == View.VISIBLE && getParentFragment() != null) {
-                    slideDown(next);
+                    ((DialogMemberSignup) getParentFragment()).mNext.callOnClick();
                 }
             }
         });
@@ -251,6 +263,34 @@ public class FragmentMemberSignup1 extends Fragment {
         animate.setDuration(300);
         view.startAnimation(animate);
         view.setVisibility(View.GONE);
+    }
+
+    public void checkCheckBox(View view) {
+        if (checkBox1.isChecked() && checkBox2.isChecked() && next.getVisibility() == View.INVISIBLE || checkBox1.isChecked() && checkBox2.isChecked() && next.getVisibility() == View.GONE) {
+            slideUp(next);
+        } else if ((!checkBox1.isChecked() && next.getVisibility() == View.VISIBLE) || (!checkBox2.isChecked() && next.getVisibility() == View.VISIBLE)) {
+            slideDown(next);
+        }
+
+        if (checkBoxAll.isChecked() && view.getId() == R.id.checkall) {
+            checkBox1.setChecked(true);
+            checkBox2.setChecked(true);
+            checkBox3.setChecked(true);
+        } else if (!checkBoxAll.isChecked() && view.getId() == R.id.checkall) {
+            if (checkBox1.isChecked() && checkBox2.isChecked() && checkBox3.isChecked()) {
+                checkBox1.setChecked(false);
+                checkBox2.setChecked(false);
+                checkBox3.setChecked(false);
+            }
+        } else if (!checkBoxAll.isChecked()) {
+            if (checkBox1.isChecked() && checkBox2.isChecked() && checkBox3.isChecked()) {
+                checkBoxAll.setChecked(true);
+            }
+        } else if (checkBoxAll.isChecked() && !checkBox1.isChecked() || !checkBox2.isChecked()) {
+            checkBoxAll.setChecked(false);
+        } else if (checkBoxAll.isChecked() && !checkBox1.isChecked() || !checkBox3.isChecked()) {
+            checkBoxAll.setChecked(false);
+        }
     }
 
 }

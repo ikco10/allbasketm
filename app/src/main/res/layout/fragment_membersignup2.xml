@@ -283,7 +283,6 @@
         android:textColor="@color/md_white_1000"
         android:textSize="32sp"
         android:textStyle="bold"
-        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
